@@ -3,25 +3,25 @@ function __prompt_command {
     if [[ $(tput cols) -gt 149 ]]; then
         active_context=$(kubectl config current-context 2>/dev/null)
         if [[ "$active_context" != "" ]]; then
-            PS1+="\[$WHITE\] kube: ${active_context} "
+            PS1+="\[$WHITE\]kube: ${active_context}"
         fi
 
         if [[ "$AWS_PROFILE" != "" ]]; then
-            PS1+="\[$WHITE\]| aws: ${AWS_PROFILE} "
+            PS1+="\[$WHITE\] | aws: ${AWS_PROFILE}"
         fi
 
 #         if [[ -f "Pulumi.yaml" ]]; then
-#             PS1+="\[$WHITE\]| stack: $(get_stack) "
+#             PS1+="\[$WHITE\] | stack: $(get_stack)"
 #         fi
 
         ref="$(git symbolic-ref HEAD 2> /dev/null)"
         if [[ "$ref" != "" ]]; then
-            PS1+="\[$WHITE\]| branch: \[$GIT_BRANCH_COLOR\]${ref#refs/heads/} "
+            PS1+="\[$WHITE\] | branch: \[$GIT_BRANCH_COLOR\]${ref#refs/heads/}"
         fi
     fi
     
     if [[ "$VIRTUAL_ENV_PROMPT" != "" ]]; then
-        PS1+="\[$WHITE\]| venv: $(echo $VIRTUAL_ENV_PROMPT | tr -d '()') "
+        PS1+="\[$WHITE\] | venv: $(echo $VIRTUAL_ENV_PROMPT | tr -d '()')"
     fi
     PS1+=")"
 
