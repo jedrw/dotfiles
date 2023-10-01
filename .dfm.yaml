@@ -1,0 +1,5 @@
+---
+ignored:
+  - README.*
+
+link_as_dir: []

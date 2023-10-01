@@ -1,0 +1,22 @@
+# PULUMI_BIN=$(which pulumi)
+# function pulumi() {
+#     if [[ $@ =~ "stack select" ]]; then
+#         STACK_CACHE=""
+#     fi
+#
+#     exec "$PULUMI_BIN" $@
+# }
+
+function get_stack {
+    if [[ "$STACK_DIR" == $(pwd) ]]; then
+        if [[ -z "$STACK_CACHE" ]]; then
+            STACK_CACHE=$(pulumi stack --show-name)
+        fi
+
+    echo "$STACK_CACHE"
+    else
+        STACK_DIR=$(pwd)
+        STACK_CACHE=$(pulumi stack --show-name)
+        echo "$STACK_CACHE"
+    fi
+}

@@ -1,0 +1,3 @@
+if [[ -x $(which atuin) ]]; then
+    eval "$(atuin init bash --disable-up-arrow)"
+fi

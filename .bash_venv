@@ -1,0 +1,31 @@
+# make a venv
+function v() {
+  if [[ -n $(env | grep 'VIRTUAL_ENV=') ]]; then
+    deactivate
+  fi
+
+  TOP_LEVEL=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ $? != 0 ]]; then
+    TOP_LEVEL=$(pwd)
+  fi
+
+  NAME=$(basename $TOP_LEVEL)
+  ENVDIR=""
+  for envdir in "$TOP_LEVEL/env" "$TOP_LEVEL/venv"; do
+    if [[ -d $envdir ]]; then
+      ENVDIR="$envdir"
+      break
+    else
+      ENVDIR="$envdir"
+    fi
+  done
+
+  if [[ ! -d $ENVDIR ]]; then
+    python3 -m venv --prompt $NAME $ENVDIR
+    source $ENVDIR/bin/activate
+    pip install wheel
+    return 0
+  fi
+
+  source $ENVDIR/bin/activate
+}
