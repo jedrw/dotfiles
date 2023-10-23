@@ -56,6 +56,7 @@ function source_if_exists() {
 source_if_exists $HOME/.bash_aliases
 source_if_exists $HOME/.bash_completions
 source_if_exists $HOME/.bash_go
+source_if_exists $HOME/.bash_libvirt
 source_if_exists $HOME/.bash_misc
 source_if_exists $HOME/.bash_prompt
 source_if_exists $HOME/.bash_php
