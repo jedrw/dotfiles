@@ -55,6 +55,8 @@ function source_if_exists() {
     fi
 }
 
+export PATH=$PATH:$HOME/.local/bin
+
 source_if_exists $HOME/.bash_aliases
 source_if_exists $HOME/.bash_completions
 source_if_exists $HOME/.bash_go
