@@ -23,6 +23,8 @@ HISTFILESIZE=10000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+export EDITOR=nano
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -63,4 +65,5 @@ source_if_exists $HOME/.bash_php
 source_if_exists $HOME/.bash_pulumi
 source_if_exists $HOME/.bash_venv
 source_if_exists $HOME/.bash_secrets
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+source_if_exists $HOME/.bash-preexec.sh
+source_if_exists $HOME/.bash_work
