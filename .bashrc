@@ -60,6 +60,7 @@ export PATH=$PATH:$HOME/.local/bin
 source_if_exists $HOME/.bash_aliases
 source_if_exists $HOME/.bash_completions
 source_if_exists $HOME/.bash_go
+source_if_exists $HOME/.bash_kubectl
 source_if_exists $HOME/.bash_libvirt
 source_if_exists $HOME/.bash_misc
 source_if_exists $HOME/.bash_prompt
