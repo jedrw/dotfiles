@@ -1,31 +1,38 @@
 function __prompt_command {
-    PS1="("
+    PS1="┌─("
+    
+    if [[ "$VIRTUAL_ENV_PROMPT" != "" ]]; then
+        PS1+="venv: $(echo $VIRTUAL_ENV_PROMPT | tr -d '()') | "
+    fi
+    
     if [[ $(tput cols) -gt 149 ]]; then
         active_context=$(kubectl config current-context 2>/dev/null)
         if [[ "$active_context" != "" ]]; then
-            PS1+="\[$WHITE\]kube: ${active_context}"
+            PS1+="\[\033[0m\]kube: ${active_context}"
         fi
 
         if [[ "$AWS_PROFILE" != "" ]]; then
-            PS1+="\[$WHITE\] | aws: ${AWS_PROFILE}"
+            PS1+="\[\033[0m\] | aws: ${AWS_PROFILE}"
         fi
 
 #         if [[ -f "Pulumi.yaml" ]]; then
-#             PS1+="\[$WHITE\] | stack: $(get_stack)"
+#             PS1+="\[\033[0m] | stack: $(get_stack)"
 #         fi
 
         ref="$(git symbolic-ref HEAD 2> /dev/null)"
         if [[ "$ref" != "" ]]; then
-            PS1+="\[$WHITE\] | branch: \[$GIT_BRANCH_COLOR\]${ref#refs/heads/}"
+            if [[ ${ref#refs/heads/} == "master" ]] || [[ ${ref#refs/heads/} == "main" ]]; then
+                GIT_BRANCH_COLOUR="\033[31m"
+            else
+                GIT_BRANCH_COLOUR="\033[0m"
+            fi
+            PS1+="\[\033[0m\] | branch: ${GIT_BRANCH_COLOUR}${ref#refs/heads/}"
         fi
     fi
     
-    if [[ "$VIRTUAL_ENV_PROMPT" != "" ]]; then
-        PS1+="\[$WHITE\] | venv: $(echo $VIRTUAL_ENV_PROMPT | tr -d '()')"
-    fi
-    PS1+=")"
+    PS1+="\033[0m)\n"
 
-    PS1+='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+    PS1+='└─\[\033[01;32m\][\u@\h\[\033[01;37m\] \w\[\033[01;32m\]]\$\[\033[00m\] '
 }
 
 PROMPT_COMMAND=__prompt_command
