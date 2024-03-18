@@ -1,0 +1,1 @@
+alias black="python -m black"
