@@ -69,4 +69,5 @@ source_if_exists $HOME/.bash_pulumi
 source_if_exists $HOME/.bash_venv
 source_if_exists $HOME/.bash_secrets
 source_if_exists $HOME/.bash-preexec.sh
+source_if_exists $HOME/.bash_wayland
 source_if_exists $HOME/.bash_work
