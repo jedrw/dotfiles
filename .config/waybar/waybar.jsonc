@@ -1,5 +1,5 @@
 {
-    // "layer": "top", // Waybar at top layer
+    "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
@@ -10,15 +10,19 @@
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
     "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "pulseaudio", "backlight", "keyboard-state", "battery", "battery#bat2", "tray", "clock"],
     // Modules configuration
-    "hyperland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{name} {icon}"
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "format": "<sub>{icon}</sub>\n{windows}",
+        "window-rewrite": {
+            "class<kitty>": "",
+            "class<firefox>": "",
+            "class<code-url-handler>": "",
+            "class<looking-glass-client>": ""
+        }
     },
     "keyboard-state": {
         "numlock": true,
-        "capslock": true,
+        "capslock": false,
         "format": "{name} {icon}",
         "format-icons": {
             "locked": "",
