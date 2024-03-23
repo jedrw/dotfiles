@@ -14,6 +14,8 @@
         "all-outputs": false,
         "format": "<sub>{icon}</sub>\n{windows}",
         "window-rewrite": {
+            "class<org.gnome.Nautilus>":"",
+            "class<org.kde.dolphin>":"",
             "class<kitty>": "",
             "class<firefox>": "",
             "class<code-url-handler>": "",
