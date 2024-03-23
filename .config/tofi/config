@@ -1,0 +1,14 @@
+prompt-text = >
+prompt-padding = 10
+width = 50%
+height = 50%
+border-width = 0
+outline-width = 0
+corner-radius = 10
+result-spacing = 25
+selection-color = #00e695
+font = "Intel One Mono"
+font-size = 16
+text-cursor = true
+background-color = #000A
+matching-algorithm = fuzzy
