@@ -2,19 +2,4 @@ source <(kubectl completion bash)
 alias k=kubectl
 complete -o default -F __start_kubectl k
 
-export MEM_KUBECONFIG="$HOME/.kube/mem-config"
-
-mem_kubeconfig () {
-	if [[ ! -a $MEM_KUBECONFIG ]]; then
-		mkfifo $MEM_KUBECONFIG
-	fi
-
-	while true
-	do
-		echo -n $(echo $KUBECONFIG_DATA | base64 -d > $MEM_KUBECONFIG)
-	done
-}
-
-mem_kubeconfig &
-
-export KUBECONFIG=$MEM_KUBECONFIG
+export KUBECONFIG=/tmp/kube/config
