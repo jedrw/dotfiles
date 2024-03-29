@@ -59,8 +59,8 @@ export PATH=$PATH:$HOME/.local/bin:/opt/homebrew/bin
 
 source_if_exists $HOME/.bash_aliases
 source_if_exists $HOME/.bash_completions
-source_if_exists $HOME/.bash_secrets
 source_if_exists $HOME/.bash_go
+source_if_exists $HOME/.bash_secrets
 source_if_exists $HOME/.bash_kubectl
 source_if_exists $HOME/.bash_libvirt
 source_if_exists $HOME/.bash_misc
@@ -68,6 +68,7 @@ source_if_exists $HOME/.bash-preexec.sh
 source_if_exists $HOME/.bash_prompt
 source_if_exists $HOME/.bash_php
 source_if_exists $HOME/.bash_pulumi
+source_if_exists $HOME/.bash_rust
 source_if_exists $HOME/.bash_venv
 source_if_exists $HOME/.bash_wayland
 source_if_exists $HOME/.bash_work

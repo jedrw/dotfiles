@@ -8,7 +8,7 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyperland/window"],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "pulseaudio", "backlight", "keyboard-state", "battery", "battery#bat2", "tray", "clock"],
+    "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "battery", "tray", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "all-outputs": false,
@@ -19,6 +19,7 @@
             "class<kitty>": "",
             "class<firefox>": "",
             "class<code-url-handler>": "",
+            "class<Code>": "",
             "class<looking-glass-client>": ""
         }
     },
@@ -73,7 +74,7 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
@@ -85,7 +86,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "  {essid} ({signalStrength}%)",
         "format-ethernet": " {ifname}",
         "tooltip-format": " {ifname} via {gwaddr}",
         "format-linked": " {ifname} (No IP)",
