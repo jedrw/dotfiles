@@ -65,7 +65,6 @@ source_if_exists $HOME/.bash_kubectl
 source_if_exists $HOME/.bash_libvirt
 source_if_exists $HOME/.bash-preexec.sh
 source_if_exists $HOME/.bash_fzf
-# source_if_exists $HOME/.bash_misc
 source_if_exists $HOME/.bash_prompt
 source_if_exists $HOME/.bash_php
 source_if_exists $HOME/.bash_pulumi
