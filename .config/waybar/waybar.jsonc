@@ -8,7 +8,7 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyperland/window"],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "battery", "tray", "clock"],
+    "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "pulseaudio", "battery", "tray", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "all-outputs": false,
@@ -81,9 +81,6 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "  {essid} ({signalStrength}%)",
@@ -95,32 +92,11 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": " {icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "  {format_source}",
-        "format-source": " {volume}%",
+        "format": "{icon} {volume}%",
         "format-source-muted": "",
         "format-icons": {
-//            "headphone": "",
-//            "hands-free": "",
-//            "headset": "",
-//            "phone": "",
-//            "portable": "",
-//            "car": "",
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
