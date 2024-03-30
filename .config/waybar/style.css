@@ -105,9 +105,38 @@ button:hover {
   margin-right: 0;
 }
 
+#temperature {
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 5px;
+}
+
+#cpu {
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+#memory {
+  border-radius: 5px;
+}
+
+#network {
+  border-radius: 5px;
+}
+
+#pulseaudio {
+  border-radius: 5px;
+}
+
+#battery {
+  border-radius: 5px;
+}
+
 #clock {
   font-size:14px;
   font-weight: bold;
+  border-radius: 5px;
 }
 
 #battery icon {
