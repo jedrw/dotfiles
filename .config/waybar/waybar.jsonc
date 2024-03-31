@@ -8,7 +8,7 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyperland/window"],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["temperature", "cpu", "memory","network", "pulseaudio", "battery", "tray", "clock"],
+    "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "pulseaudio", "battery", "tray", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "all-outputs": false,
@@ -55,6 +55,17 @@
     "memory": {
         "format": " {}%"
     },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
     "temperature": {
         "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
@@ -71,8 +82,8 @@
     "battery": {
         "states": {
             // "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 15,
+            "critical": 5
         },
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
