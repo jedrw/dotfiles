@@ -2,4 +2,6 @@
     "editor.fontFamily": "Intel One Mono",
     "editor.fontSize": 16,
     "files.autoSave": "onFocusChange",
+    "editor.minimap.size": "fill",
+    "editor.minimap.renderCharacters": false,
 }
