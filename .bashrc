@@ -58,6 +58,7 @@ function source_if_exists() {
 export PATH=$PATH:$HOME/.cargo/bin:$HOME/.local/bin:/opt/homebrew/bin
 
 source_if_exists $HOME/.bash_aliases
+source_if_exists $HOME/.bash_aws
 source_if_exists $HOME/.bash_completions
 source_if_exists $HOME/.bash_go
 source_if_exists $HOME/.bash_secrets
