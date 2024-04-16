@@ -1,1 +1,2 @@
 export AWS_PAGER=""
+alias aws-account='aws sts get-caller-identity | jq -r .Account'
