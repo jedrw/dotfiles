@@ -1,0 +1,18 @@
+[font]
+size = 18.0
+
+[font.bold]
+family = "Intel One Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Intel One Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Intel One Mono"
+style = "Italic"
+
+[font.normal]
+family = "Intel One Mono"
+style = "Regular"
