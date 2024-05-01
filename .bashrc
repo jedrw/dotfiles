@@ -70,6 +70,7 @@ source_if_exists $HOME/.bash_prompt
 source_if_exists $HOME/.bash_php
 source_if_exists $HOME/.bash_pulumi
 source_if_exists $HOME/.bash_rust
+source_if_exists $HOME/.bash_tmux
 source_if_exists $HOME/.bash_venv
 source_if_exists $HOME/.bash_wayland
 source_if_exists $HOME/.bash_work
