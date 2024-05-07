@@ -2,5 +2,6 @@
     "editor.fontFamily": "Intel One Mono",
     "editor.fontSize": 18,
     "files.autoSave": "onFocusChange",
-    "diffEditor.ignoreTrimWhitespace": false
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.enabled": false
 }
