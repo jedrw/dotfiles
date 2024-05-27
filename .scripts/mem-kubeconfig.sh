@@ -1,10 +1,17 @@
 #!/bin/bash
 
-MEM_KUBECONFIG="/tmp/kube/config"
-mkdir -p /tmp/kube
-echo "Created /tmp/kube dir"
+DIR=~/.local/share/mount
+PIPE=$DIR/kubeconfig
 
-doppler --project jedrw secrets get KUBECONFIG_DATA --plain | base64 -d > $MEM_KUBECONFIG
-chmod 600 $MEM_KUBECONFIG
-echo "Wrote kubeconfig into $MEM_KUBECONFIG"
+mkdir -p $DIR
 
+[[ -p $PIPE ]] || (
+    rm -f $PIPE
+    mknod $PIPE p
+    chmod 600 $PIPE
+)
+
+while true
+do
+    doppler --project jedrw secrets get KUBECONFIG_DATA --plain | base64 -d > $PIPE
+done
