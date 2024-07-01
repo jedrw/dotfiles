@@ -3,5 +3,6 @@
     "editor.fontSize": 18,
     "files.autoSave": "onFocusChange",
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
 }
