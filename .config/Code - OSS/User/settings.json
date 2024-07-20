@@ -1,8 +1,0 @@
-{
-    "editor.fontFamily": "Intel One Mono",
-    "editor.fontSize": 18,
-    "files.autoSave": "onFocusChange",
-    "go.toolsManagement.autoUpdate": true,
-    "editor.minimap.size": "fill",
-    "editor.minimap.enabled": false,
-}

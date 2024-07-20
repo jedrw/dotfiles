@@ -5,18 +5,31 @@
     // "width": 1280, // Waybar width
     //"spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyperland/window"],
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["sway/window"],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
     "modules-right": ["power-profiles-daemon", "temperature", "cpu", "memory","network", "pulseaudio","backlight", "battery", "tray", "clock"],
     // Modules configuration
-    "hyprland/workspaces": {
+    // "hyprland/workspaces": {
+    //     "all-outputs": false,
+    //     "format": "<sub>{icon}</sub>\n{windows}",
+    //     "window-rewrite": {
+    //         "class<org.gnome.Nautilus>":"",
+    //         "class<org.kde.dolphin>":"",
+    //         "class<kitty>": "",
+    //         "class<firefox>": "",
+    //         "class<code-url-handler>": "",
+    //         "class<code-oss>": "",            
+    //         "class<Code>": "",
+    //         "class<looking-glass-client>": ""
+    //     }
+    // },
+    "sway/workspaces": {
         "all-outputs": false,
-        "format": "<sub>{icon}</sub>\n{windows}",
+        "format": "<sub>{icon}</sub>{windows}",
         "window-rewrite": {
             "class<org.gnome.Nautilus>":"",
             "class<org.kde.dolphin>":"",
-            "class<kitty>": "",
             "class<firefox>": "",
             "class<code-url-handler>": "",
             "class<code-oss>": "",            
