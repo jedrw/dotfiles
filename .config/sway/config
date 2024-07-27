@@ -90,6 +90,8 @@ input type:keyboard {
 	xkb_layout gb
 }
 
+mouse_warping none
+
 default_border pixel 2
 
 # Dropdown terminal
