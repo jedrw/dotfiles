@@ -20,6 +20,20 @@ set $filemanager nautilus
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/jedrw/Pictures/Wallpapers/current.png fill
+
+output HDMI-A-1 {
+    resolution 2560x1440@75Hz
+    position 0 0
+    transform 270
+}
+
+output DP-1 {
+    resolution 2560x1440@170Hz
+    render_bit_depth 10
+    position 1440 560
+}
+
+
 #
 # Example configuration:
 #
