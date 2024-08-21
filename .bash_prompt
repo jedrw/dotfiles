@@ -25,6 +25,8 @@ function __prompt_command {
         if [[ "$ref" != "" ]]; then
             if [[ ${ref#refs/heads/} == "master" ]] || [[ ${ref#refs/heads/} == "main" ]]; then
                 GIT_BRANCH_COLOUR="\033[31m"
+            elif [[ ${ref#refs/heads/} == "develop" ]]; then
+                GIT_BRANCH_COLOUR="\033[33m"
             else
                 GIT_BRANCH_COLOUR="\033[0m"
             fi
