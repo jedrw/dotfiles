@@ -1,0 +1,21 @@
+[window]
+opacity = 0.8
+
+[font]
+size = 16.0
+
+[font.bold]
+family = "Intel One Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Intel One Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Intel One Mono"
+style = "Italic"
+
+[font.normal]
+family = "Intel One Mono"
+style = "Regular"
