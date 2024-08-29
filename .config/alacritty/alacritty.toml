@@ -4,7 +4,7 @@ import = ["~/.config/alacritty/themes/dracula/dracula.toml"]
 opacity = 0.8
 
 [font]
-size = 16.0
+size = 18.0
 
 [font.bold]
 family = "Intel One Mono"
