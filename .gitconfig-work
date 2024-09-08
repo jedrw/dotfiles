@@ -1,0 +1,16 @@
+[user]
+	name = Jed Williamson
+	email = jed.williamson@tillo.io
+
+[pull]
+	default = current
+	ff = only
+
+[add]
+	verbose = true
+
+[commit]
+	verbose = true
+
+[push]
+	autoSetupRemote = true

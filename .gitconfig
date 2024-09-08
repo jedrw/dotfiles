@@ -1,0 +1,9 @@
+[user]
+	name = lupinelab
+	email = jed@lupinelab.co.uk
+
+[push]
+	autoSetupRemote = true
+
+[includeIf "gitdir:~/repos/bitbucket/giftcartdev"]
+  path = ~/.gitconfig-work
