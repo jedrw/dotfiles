@@ -9,7 +9,7 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Your preferred terminal emulator
-set $term alacritty
+set $term wezterm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -95,25 +95,25 @@ mouse_warping none
 default_border pixel 2
 
 # Dropdown terminal
-set $ddterm-id dropdown-terminal
-set $ddterm $term --class $ddterm-id
-set $ddterm-resize resize set 100ppt 100ppt, move position 0 0
-for_window [app_id="$ddterm-id"] {
+set $ddterm_id dropdown
+set $ddterm "$term start --class $ddterm_id"
+set $ddterm_resize resize set 100ppt 100ppt, move position 0 0
+for_window [app_id="$ddterm_id"] {
   floating enable
-  $ddterm-resize
+  $ddterm_resize
   move to scratchpad
   scratchpad show
 }
 
-bindsym $mod+grave exec swaymsg '[app_id="$ddterm-id"] scratchpad show' \
+bindsym $mod+grave exec swaymsg '[app_id="$ddterm_id"] scratchpad show' \
   || $ddterm \
   && sleep .1 \
-  && swaymsg '[app_id="$ddterm-id"] $ddterm-resize'
+  && swaymsg '[app_id="$ddterm_id"] $ddterm_resize'
 
-bindsym Ctrl+grave exec swaymsg '[app_id="$ddterm-id"] scratchpad show' \
+bindsym Ctrl+grave exec swaymsg '[app_id="$ddterm_id"] scratchpad show' \
   || $ddterm \
   && sleep .1 \
-  && swaymsg '[app_id="$ddterm-id"] $ddterm-resize'
+  && swaymsg '[app_id="$ddterm_id"] $ddterm_resize'
 
 ### Key bindings
 #
@@ -255,6 +255,7 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 
+exec_always $ddterm
 exec_always 'pkill waybar; waybar --config ~/.config/waybar/waybar.jsonc'
 # Read `man 5 sway-bar` for more information about this section.
 # bar {

@@ -29,6 +29,8 @@
         "window-format": "{name}",
         "window-rewrite": {
             "Alacritty": "",
+            "class<dropdown>": "",
+            "class<org.wezfurlong.wezterm>": "",
             "class<org.gnome.Nautilus>":"",
             "class<org.kde.dolphin>":"",
             "Mozilla Firefox": "",

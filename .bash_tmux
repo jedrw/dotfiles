@@ -1,3 +1,4 @@
-if [[ -z "$TMUX" ]]; then
-    tmux
-fi
+# Disabled after switching to Wezterm
+# if [[ -z "$TMUX" ]]; then
+#     tmux
+# fi
