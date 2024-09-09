@@ -9,7 +9,7 @@ function module.apply_to_config(config)
     if sys.is_os('linux') then
         config.font_size = 16.0
     else
-        config.font_size = 18.0
+        config.font_size = 20.0
     end
     config.line_height = 1
 
@@ -24,7 +24,7 @@ function module.apply_to_config(config)
     config.pane_focus_follows_mouse = true
     config.scrollback_lines = 20000
     config.window_background_opacity = 0.8
-    config.window_decorations = "NONE"
+    config.window_decorations = "RESIZE"
 
     local color_scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
     local fg_color = wezterm.color.parse(color_scheme.foreground)
