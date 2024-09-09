@@ -60,7 +60,8 @@
     },
     "clock": {
         "format": "{:%d-%m-%Y %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "timezone": "Europe/London"
     },
     "cpu": {
         "interval": 5,
