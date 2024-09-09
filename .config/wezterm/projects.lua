@@ -58,7 +58,7 @@ function module.choose_project()
                 end
             end
 
-            -- Else create a new tab for porject with cwd of project path
+            -- Else create a new tab for project with cwd of project path
             local tab, _, _ = window:mux_window():spawn_tab { cwd = path }
             tab:set_title(project)
         end),
