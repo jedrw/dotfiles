@@ -41,6 +41,7 @@ function module.choose_project()
         title = "Projects",
         choices = choices,
         fuzzy = true,
+        fuzzy_description = "Search: ",
         action = wezterm.action_callback(function(window, pane, id, label)
             -- "label" may be empty if nothing was selected. Don't bother doing anything
             -- when that happens.
