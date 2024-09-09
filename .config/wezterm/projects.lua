@@ -1,58 +1,66 @@
 local wezterm = require('wezterm')
 local module = {}
 
-local function file_exists(name)
-    local f = io.open(name, "r")
-    return f ~= nil and io.close(f)
-end
-
-local function project_dirs()
-    local projects = { wezterm.home_dir }
-
-    local projector_local_bin = wezterm.home_dir .. "/.local/bin/projector"
-    local projector_cargo_bin = wezterm.home_dir .. "/.cargo/bin/projector"
-    local projector_bin = projector_local_bin
-    if file_exists(projector_cargo_bin) then
-        projector_bin = projector_cargo_bin
-    end
-
-    wezterm.log_info("Projector bin:" .. projector_bin)
-
-    local success, stdout, _ = wezterm.run_child_process({ projector_bin, 'list' })
-    if success then
-        for _, line in ipairs(wezterm.split_by_newlines(stdout)) do
-            table.insert(projects, line)
+local function is_git_repo(dir)
+    for _, f in ipairs(wezterm.read_dir(dir)) do
+        local filename = string.gsub(f, "(.*/)(.*)", "%2")
+        if filename == ".git" then
+            return true
         end
     end
 
-    return projects
+    return false
+end
+
+local function recursively_find_git_repos(path)
+    for _, dir in ipairs(wezterm.read_dir(path)) do
+        if is_git_repo(dir) then
+            local project_name = string.gsub(dir, "(.*/)(.*)", "%2")
+            Repos[project_name] = dir
+        else
+            recursively_find_git_repos(dir)
+        end
+    end
+end
+
+local function get_repos()
+    local repos_dir = wezterm.home_dir .. "/repos"
+    Repos = {}
+    recursively_find_git_repos(repos_dir)
+    return Repos
 end
 
 function module.choose_project()
+    local repos = get_repos()
     local choices = {}
-    for _, value in ipairs(project_dirs()) do
-        table.insert(choices, { label = value })
+    for project, path in pairs(repos) do
+        table.insert(choices, { label = project, id = path })
     end
 
     return wezterm.action.InputSelector {
         title = "Projects",
         choices = choices,
         fuzzy = true,
-        action = wezterm.action_callback(function(child_window, child_pane, id, label)
+        action = wezterm.action_callback(function(window, pane, id, label)
             -- "label" may be empty if nothing was selected. Don't bother doing anything
             -- when that happens.
-            if not label then return end
+            if not label then
+                return
+            end
 
-            -- The SwitchToWorkspace action will switch us to a workspace if it already exists,
-            -- otherwise it will create it for us.
-            child_window:perform_action(wezterm.action.SwitchToWorkspace {
-                -- We'll give our new workspace a nice name, like the last path segment
-                -- of the directory we're opening up.
-                name = label:match("([^/]+)$"),
-                -- Here's the meat. We'll spawn a new terminal with the current working
-                -- directory set to the directory that was picked.
-                spawn = { cwd = label },
-            }, child_pane)
+            local project = label
+            local path = id
+            -- Check for a tab with a matching title and switch to it if found
+            for _, tab in ipairs(window:mux_window():tabs()) do
+                if tab:get_title() == project then
+                    tab:activate()
+                    return
+                end
+            end
+
+            -- Else create a new tab for porject with cwd of project path
+            local tab, _, _ = window:mux_window():spawn_tab { cwd = path }
+            tab:set_title(project)
         end),
     }
 end

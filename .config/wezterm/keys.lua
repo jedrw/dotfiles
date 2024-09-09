@@ -1,5 +1,5 @@
 local wezterm = require "wezterm"
--- local projects = require "projects"
+local projects = require "projects"
 local actions = wezterm.action
 local module = {}
 
@@ -13,19 +13,14 @@ function module.apply_to_config(config)
             action = actions.ReloadConfiguration,
         },
         {
-            key = "\"",
+            key = "%",
             mods = "LEADER|SHIFT",
             action = actions.SplitVertical,
         },
         {
-            key = "%",
+            key = "\"",
             mods = "LEADER|SHIFT",
             action = actions.SplitHorizontal,
-        },
-        {
-            key = "t",
-            mods = "LEADER",
-            action = actions.SpawnCommandInNewTab { cwd = wezterm.home_dir },
         },
         {
             key = "RightArrow",
@@ -81,8 +76,8 @@ function module.apply_to_config(config)
             action = wezterm.action.ShowDebugOverlay
         },
         {
-            key = "s",
-            mods = "LEADER|SHIFT",
+            key = "t",
+            mods = "LEADER",
             action = actions.PromptInputLine {
                 description = wezterm.format {
                     { Attribute = { Intensity = "Bold" } },
@@ -90,51 +85,18 @@ function module.apply_to_config(config)
                     { Text = "Enter name for new tab" },
                 },
                 action = wezterm.action_callback(function(window, pane, line)
-                    -- line will be `nil` if they hit escape without entering anything
-                    -- An empty string if they just hit enter
-                    -- Or the actual line of text they wrote
+                    window:mux_window():spawn_tab { cwd = wezterm.home_dir }
                     if line then
-                        window:mux_window():spawn_tab { cwd = wezterm.home_dir }
                         window:active_tab():set_title(line)
                     end
                 end),
             },
         },
-
-        -- Adding in workspace features
-        -- Prompt for a name to use for a new workspace and switch to it.
-        -- {
-        --     key = "w",
-        --     mods = "LEADER",
-        --     action = actions.PromptInputLine {
-        --         description = wezterm.format {
-        --             { Attribute = { Intensity = "Bold" } },
-        --             { Foreground = { AnsiColor = "Fuchsia" } },
-        --             { Text = "Enter name for new workspace" },
-        --         },
-        --         action = wezterm.action_callback(function(window, pane, line)
-        --             -- line will be `nil` if they hit escape without entering anything
-        --             -- An empty string if they just hit enter
-        --             -- Or the actual line of text they wrote
-        --             if line then
-        --                 window:perform_action(
-        --                     actions.SwitchToWorkspace {
-        --                         name = line,
-        --                     },
-        --                     pane
-        --                 )
-        --             end
-        --         end),
-        --     },
-        -- },
-        -- {
-        --     key = "p",
-        --     mods = "LEADER",
-        --     action = projects.choose_project(),
-        -- },
-
-        -- Show the launcher in fuzzy selection mode and have it list all workspaces
-        -- and allow activating one.
+        {
+            key = "p",
+            mods = "LEADER",
+            action = projects.choose_project(),
+        },
         {
             key = "s",
             mods = "LEADER",
