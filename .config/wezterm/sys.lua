@@ -1,11 +1,11 @@
-local M = {}
+local module = {}
 local wezterm = require 'wezterm'
 
-M.is_os = function(name)
+module.is_os = function(name)
     return wezterm.target_triple:find(name) ~= nil
 end
 
-M.is_linux = M.is_os("linux")
-M.is_macos = M.is_os("darwin")
+module.is_linux = module.is_os("linux")
+module.is_macos = module.is_os("darwin")
 
-return M
+return module

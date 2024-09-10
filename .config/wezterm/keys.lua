@@ -1,6 +1,5 @@
 local wezterm = require "wezterm"
-local sys = require 'sys'
-local actions = wezterm.action
+local projects = require "projects"
 local module = {}
 
 function module.apply_to_config(config)
@@ -10,52 +9,52 @@ function module.apply_to_config(config)
         {
             key = "r",
             mods = "LEADER",
-            action = actions.ReloadConfiguration,
+            action = wezterm.action.ReloadConfiguration,
         },
         {
             key = "%",
             mods = "LEADER|SHIFT",
-            action = actions.SplitVertical,
+            action = wezterm.action.SplitVertical,
         },
         {
             key = "\"",
             mods = "LEADER|SHIFT",
-            action = actions.SplitHorizontal,
+            action = wezterm.action.SplitHorizontal,
         },
         {
             key = "RightArrow",
             mods = "LEADER",
-            action = actions.ActivateTabRelative(1),
+            action = wezterm.action.ActivateTabRelative(1),
         },
         {
             key = "LeftArrow",
             mods = "LEADER",
-            action = actions.ActivateTabRelative(-1),
+            action = wezterm.action.ActivateTabRelative(-1),
         },
         {
             key = "LeftArrow",
             mods = "LEADER|SHIFT",
-            action = actions.ActivatePaneDirection("Left"),
+            action = wezterm.action.ActivatePaneDirection("Left"),
         },
         {
             key = "DownArrow",
             mods = "LEADER|SHIFT",
-            action = actions.ActivatePaneDirection("Down"),
+            action = wezterm.action.ActivatePaneDirection("Down"),
         },
         {
             key = "UpArrow",
             mods = "LEADER|SHIFT",
-            action = actions.ActivatePaneDirection("Up"),
+            action = wezterm.action.ActivatePaneDirection("Up"),
         },
         {
             key = "RightArrow",
             mods = "LEADER|SHIFT",
-            action = actions.ActivatePaneDirection("Right"),
+            action = wezterm.action.ActivatePaneDirection("Right"),
         },
         {
             key = "x",
             mods = "LEADER",
-            action = actions.CloseCurrentPane({ confirm = false }),
+            action = wezterm.action.CloseCurrentPane({ confirm = false }),
         },
         {
             key = "c",
@@ -65,7 +64,7 @@ function module.apply_to_config(config)
                 for _, p in ipairs(tab:panes()) do
                     if p:pane_id() ~= pane:pane_id() then
                         p:activate()
-                        win:perform_action(actions.CloseCurrentPane { confirm = false }, p)
+                        win:perform_action(wezterm.action.CloseCurrentPane { confirm = false }, p)
                     end
                 end
             end),
@@ -78,7 +77,7 @@ function module.apply_to_config(config)
         {
             key = "t",
             mods = "LEADER",
-            action = actions.PromptInputLine {
+            action = wezterm.action.PromptInputLine {
                 description = wezterm.format {
                     { Attribute = { Intensity = "Bold" } },
                     { Foreground = { AnsiColor = "Fuchsia" } },
@@ -93,29 +92,63 @@ function module.apply_to_config(config)
             },
         },
         {
+            key = "p",
+            mods = "LEADER",
+            action = wezterm.action_callback(function(window, pane)
+                local repos_dir = wezterm.home_dir .. "/repos"
+                local repos = projects.get_repos(repos_dir)
+                local choices = {}
+                for _, path in ipairs(repos) do
+                    local project = string.gsub(path, "(.*/)(.*)", "%2")
+                    table.insert(choices, { label = path, id = project })
+                end
+
+                window:perform_action(
+                    wezterm.action.InputSelector {
+                        title = "Projects",
+                        choices = choices,
+                        fuzzy = true,
+                        fuzzy_description = "Search: ",
+                        action = wezterm.action_callback(function(window, pane, project, path)
+                            -- "label" may be empty if nothing was selected. Don't bother doing anything
+                            -- when that happens.
+                            if not path then
+                                return
+                            end
+
+                            -- Check for a tab with a matching title and switch to it if found
+                            for _, tab in ipairs(window:mux_window():tabs()) do
+                                if tab:get_title() == project then
+                                    tab:activate()
+                                    return
+                                end
+                            end
+
+                            -- Else create a new tab for project with cwd of project path
+                            local tab, _, _ = window:mux_window():spawn_tab { cwd = path }
+                            tab:set_title(project)
+                        end),
+                    },
+                    pane
+                )
+            end
+            ),
+        },
+        {
             key = "s",
             mods = "LEADER",
-            action = actions.ShowLauncherArgs {
+            action = wezterm.action.ShowLauncherArgs {
                 flags = "FUZZY|TABS",
             },
         },
     }
-
-    if sys.is_linux then
-        local projects = require "projects"
-        table.insert(keys, {
-            key = "p",
-            mods = "LEADER",
-            action = projects.choose_project(),
-        })
-    end
 
     for i = 1, 9 do
         -- LEADER + number to activate that tab
         table.insert(keys, {
             key = tostring(i),
             mods = "LEADER",
-            action = actions.ActivateTab(i - 1),
+            action = wezterm.action.ActivateTab(i - 1),
         })
     end
 
