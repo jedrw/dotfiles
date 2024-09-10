@@ -1,5 +1,5 @@
 local wezterm = require "wezterm"
-local projects = require "projects"
+local sys = require 'sys'
 local actions = wezterm.action
 local module = {}
 
@@ -93,11 +93,6 @@ function module.apply_to_config(config)
             },
         },
         {
-            key = "p",
-            mods = "LEADER",
-            action = projects.choose_project(),
-        },
-        {
             key = "s",
             mods = "LEADER",
             action = actions.ShowLauncherArgs {
@@ -105,6 +100,15 @@ function module.apply_to_config(config)
             },
         },
     }
+
+    if sys.is_linux then
+        local projects = require "projects"
+        table.insert(keys, {
+            key = "p",
+            mods = "LEADER",
+            action = projects.choose_project(),
+        })
+    end
 
     for i = 1, 9 do
         -- LEADER + number to activate that tab
