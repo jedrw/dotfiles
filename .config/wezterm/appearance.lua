@@ -15,6 +15,7 @@ function module.apply_to_config(config)
 
     config.window_frame = {
         font = wezterm.font({ family = font_family, weight = "Bold" }),
+        font_size = 16,
         active_titlebar_bg = "rgba(0,0,0,0.8)",
         inactive_titlebar_bg = "rgba(0,0,0,0.8)",
     }
