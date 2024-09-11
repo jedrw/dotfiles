@@ -8,21 +8,38 @@ function is_dir(path)
     return code == 21
 end
 
-local function recursively_find_git_repos(path, repos, depth, max_depth)
-    if depth >= max_depth then
-        return
+local function is_git_repo(path)
+    local dirs = wezterm.read_dir(path)
+    for _, dir in ipairs(dirs) do
+        if string.match(dir, "%.git") then
+            return true
+        end
     end
+    return false
+end
 
-    for _, dir in ipairs(wezterm.read_dir(path)) do
-        if is_dir(dir) then
-            if string.match(dir, "%.git") then
-                table.insert(repos, path)
-                break
-            else
-                recursively_find_git_repos(dir, repos, depth + 1, max_depth)
+local function recursively_find_git_repos(start_dir)
+    local repos = {}
+    local stack = { start_dir }
+    while stack do
+        local dir = table.remove(stack, 1)
+        if dir == nil then
+            break
+        end
+
+        if is_git_repo(dir) then
+            table.insert(repos, dir)
+        else
+            local sub_dirs = wezterm.read_dir(dir)
+            for _, sub_dir in ipairs(sub_dirs) do
+                if is_dir(sub_dir) then
+                    table.insert(stack, 1, sub_dir)
+                end
             end
         end
     end
+
+    return repos
 end
 
 local function sort_alphabetical(a, b)
@@ -30,8 +47,7 @@ local function sort_alphabetical(a, b)
 end
 
 function module.get_repos(repos_dir)
-    local repos = {}
-    recursively_find_git_repos(repos_dir, repos, 0, 4)
+    local repos = recursively_find_git_repos(repos_dir)
     table.sort(repos, sort_alphabetical)
     return repos
 end

@@ -99,8 +99,7 @@ function module.apply_to_config(config)
                 local repos = projects.get_repos(repos_dir)
                 local choices = {}
                 for _, path in ipairs(repos) do
-                    local project = string.gsub(path, "(.*/)(.*)", "%2")
-                    table.insert(choices, { label = path, id = project })
+                    table.insert(choices, { label = path })
                 end
 
                 window:perform_action(
@@ -117,6 +116,7 @@ function module.apply_to_config(config)
                             end
 
                             -- Check for a tab with a matching title and switch to it if found
+                            local project = string.gsub(path, "(.*/)(.*)", "%2")
                             for _, tab in ipairs(window:mux_window():tabs()) do
                                 if tab:get_title() == project then
                                     tab:activate()
