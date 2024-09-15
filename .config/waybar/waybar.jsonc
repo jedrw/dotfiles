@@ -35,6 +35,7 @@
             "class<org.kde.dolphin>":"",
             "Mozilla Firefox": "",
             // ".* - Visual Studio Code": "",
+            "title<.* - Visual Studio Code>": "",
             "class<Code>": "",
             "class<looking-glass-client>": ""
         }

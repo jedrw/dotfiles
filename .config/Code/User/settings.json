@@ -1,15 +1,15 @@
 {
-    "editor.fontFamily": "Intel One Mono",
-    "editor.fontSize": 18,
-    "files.autoSave": "onFocusChange",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.minimap.enabled": false,
-    "editor.formatOnSave": true,
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "go.toolsManagement.autoUpdate": true,
-    "terminal.integrated.fontSize": 18,
-    "search.useReplacePreview": false,
-    "editor.indentSize": "tabSize"
+  "editor.fontFamily": "Intel One Mono",
+  "editor.fontSize": 18,
+  "files.autoSave": "onFocusChange",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "terminal.integrated.fontSize": 18,
+  "search.useReplacePreview": false,
+  "editor.indentSize": "tabSize"
 }

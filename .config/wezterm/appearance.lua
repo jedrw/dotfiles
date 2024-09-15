@@ -17,11 +17,11 @@ function module.apply_to_config(config)
 
     config.window_frame = {
         font = wezterm.font({ family = font_family, weight = "Bold" }),
+        font_size = config.font_size - 4,
         active_titlebar_bg = "rgba(0,0,0,0.8)",
         inactive_titlebar_bg = "rgba(0,0,0,0.8)",
     }
 
-    config.window_frame.font_size = config.font_size - 4
 
     config.mouse_wheel_scrolls_tabs = false
     config.prefer_to_spawn_tabs = false
