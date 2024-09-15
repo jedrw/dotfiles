@@ -5,6 +5,9 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
+  "[helm]": {
+    "editor.formatOnSave": false
+  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
