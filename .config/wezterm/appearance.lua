@@ -70,10 +70,11 @@ function module.apply_to_config(config)
     config.enable_scroll_bar = false
 
     config.window_padding = {
-        left = 0,
-        right = 0,
-        bottom = 0,
+        -- Shrug
         top = 0,
+        right = 5,
+        bottom = 0,
+        left = 10,
     }
 end
 
