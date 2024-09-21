@@ -33,6 +33,17 @@ output DP-1 {
     position 1440 560
 }
 
+output DP-2 {
+    resolution 2560x1440@170Hz
+    render_bit_depth 10
+    position 1440 560
+}
+
+output DP-3 {
+    resolution 2560x1440@75Hz
+    position 0 0
+    transform 270
+}
 
 #
 # Example configuration:
