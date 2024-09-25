@@ -18,9 +18,9 @@ mkdir -p $DIR
 
 while true
 do
-    secret=$(secret-tool lookup $KEYRING_ATTR $USERNAME)
+    SECRET=$(secret-tool lookup $KEYRING_ATTR $USERNAME)
     (
         echo "username=$USERNAME"
-        echo "password=$secret"
+        echo "password=$SECRET"
     ) > $PIPE
 done
