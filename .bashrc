@@ -41,7 +41,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 function debug() {
-    if [[ -n $LL_DEBUG ]]; then
+    if [[ -n $BASHRC_DEBUG ]]; then
         echo $@ 1>&2
     fi
 }
