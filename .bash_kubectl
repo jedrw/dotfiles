@@ -4,4 +4,6 @@ complete -o default -F __start_kubectl k
 
 export KUBECONFIG=~/.local/share/mount/kubeconfig
 
-ln -s $(which kubectl) ~/.local/bin/k
+if [[ ! -L ~/.local/bin/k ]]; then
+    ln -s $(which kubectl) ~/.local/bin/k
+fi
