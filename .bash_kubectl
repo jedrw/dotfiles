@@ -3,3 +3,5 @@ alias k=kubectl
 complete -o default -F __start_kubectl k
 
 export KUBECONFIG=~/.local/share/mount/kubeconfig
+
+ln -s $(which kubectl) ~/.local/bin/k
