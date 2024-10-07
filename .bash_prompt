@@ -8,9 +8,11 @@ function __prompt_command {
     fi
     
     if [[ $(tput cols) -gt 114 ]]; then
-        active_context=$(kubectl config current-context 2>/dev/null)
-        if [[ "$active_context" != "" ]]; then
-            PS1+="\[\033[0m\]kube: ${active_context}"
+        if [[ $(type -P kubectl) != "" ]] && [[ ! -L ~/.local/bin/k ]]; then
+            active_context=$(kubectl config current-context 2>/dev/null)
+            if [[ "$active_context" != "" ]]; then
+                PS1+="\[\033[0m\]kube: ${active_context}"
+            fi
         fi
 
         if [[ "$AWS_PROFILE" != "" ]]; then
