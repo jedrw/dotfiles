@@ -2,5 +2,4 @@
 ignored:
   - README.*
 
-link_as_dir:
-  - .local/share/fonts
+link_as_dir: {}

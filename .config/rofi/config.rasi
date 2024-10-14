@@ -1,0 +1,33 @@
+@theme "~/.config/rofi/themes/spotlight-dark.rasi"
+
+* {
+    font: "Intel One Mono 14";
+    font-bold: "Intel One Mono Bold 14";
+    bg: rgba (0,0,0,60%);
+}
+
+window {
+    background-color:   @bg;
+    opacity:        0.3;
+    location:       center;
+    width:          40%;
+    height:         40%;
+    border-radius:  20;
+}
+
+inputbar {
+    font:       @font-bold;
+}
+
+element selected normal, element selected active {
+    background-color:   @background-color;
+    font:       @font-bold;
+
+    text-color:         #00ff99;
+}
+
+element {
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  spacing: 5px;
+}
