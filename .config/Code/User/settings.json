@@ -1,6 +1,6 @@
 {
   "editor.fontFamily": "Intel One Mono",
-  "editor.fontSize": 18,
+  "editor.fontSize": 20,
   "files.autoSave": "onFocusChange",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
@@ -8,11 +8,10 @@
   "[helm]": {
     "editor.formatOnSave": false
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 18,
   "search.useReplacePreview": false,
-  "editor.indentSize": "tabSize"
+  "editor.indentSize": "tabSize",
+  "explorer.fileNesting.enabled": false
 }
