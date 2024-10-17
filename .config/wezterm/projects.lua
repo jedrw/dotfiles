@@ -1,7 +1,7 @@
 local wezterm = require('wezterm')
 local module = {}
 
-function is_dir(path)
+local function is_dir(path)
     local f = io.open(path, "r")
     local _, _, code = f:read(1)
     f:close()
@@ -9,13 +9,13 @@ function is_dir(path)
 end
 
 local function is_git_repo(path)
-    local dirs = wezterm.read_dir(path)
-    for _, dir in ipairs(dirs) do
-        if string.match(dir, "%.git") then
-            return true
-        end
+    local f=io.open(path .. "/".. ".git","r")
+    if f~=nil then
+        io.close(f)
+        return true
+    else
+        return false
     end
-    return false
 end
 
 local function recursively_find_git_repos(start_dir)
