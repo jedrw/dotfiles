@@ -9,7 +9,7 @@ local function is_dir(path)
 end
 
 local function is_git_repo(path)
-    local f=io.open(path .. "/".. ".git","r")
+    local f=io.open(path .. "/.git","r")
     if f~=nil then
         io.close(f)
         return true
