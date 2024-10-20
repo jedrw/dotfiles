@@ -6,4 +6,4 @@ export KUBECONFIG=~/.local/share/mount/kubeconfig
 
 if [[ $(command -v kubectl) ]] && [[ ! -L ~/.local/bin/k ]]; then
     ln -s $(which kubectl) ~/.local/bin/k
-fi
+fi1
