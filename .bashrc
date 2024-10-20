@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=10000
+HISTSIZE=20000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -74,6 +74,3 @@ source_if_exists $HOME/.bash_tmux
 source_if_exists $HOME/.bash_venv
 source_if_exists $HOME/.bash_wayland
 source_if_exists $HOME/.bash_work
-
-# add Pulumi to the PATH
-export PATH=$PATH:/home/jedrw/.pulumi/bin

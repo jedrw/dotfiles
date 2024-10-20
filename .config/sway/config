@@ -15,7 +15,7 @@ set $term wezterm
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | tofi-drun --drun-launch=true | xargs swaymsg exec --
 set $menu rofi -show drun
-set $filemanager nautilus
+set $filemanager dolphin
 
 ### Output configuration
 #
