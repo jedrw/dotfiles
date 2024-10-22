@@ -9,13 +9,13 @@ local function is_dir(path)
 end
 
 local function is_git_repo(path)
-    local f=io.open(path .. "/.git","r")
-    if f~=nil then
-        io.close(f)
-        return true
-    else
-        return false
+    local dirs = wezterm.read_dir(path)
+    for _, dir in ipairs(dirs) do
+        if string.match(dir, "%.git") then
+            return true
+        end
     end
+    return false
 end
 
 local function recursively_find_git_repos(start_dir)
