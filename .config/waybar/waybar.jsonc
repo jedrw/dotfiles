@@ -2,6 +2,7 @@
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
+    "include": ["~/.config/waybar/local.jsonc"],
     // "width": 1280, // Waybar width
     //"spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -61,7 +62,8 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%d-%m-%Y %H:%M}",
+        "interval": 1,
+        "format": "{:%d-%m-%Y %H:%M:%S}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "timezone": "Europe/London"
     },
@@ -85,7 +87,7 @@
         }
     },
     "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+        // "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
         "critical-threshold": 80,
         "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",

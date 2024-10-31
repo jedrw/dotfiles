@@ -1,3 +1,5 @@
 mappings:
   - match: \.bash_config
     link_as_dir: true
+  - match: \.config/waybar/local.json
+    skip: true
