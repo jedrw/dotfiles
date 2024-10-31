@@ -98,8 +98,21 @@ function module.apply_to_config(config)
                 local repos_dir = wezterm.home_dir .. "/repos"
                 local repos = projects.get_repos(repos_dir)
                 local choices = {}
-                for _, path in ipairs(repos) do
-                    table.insert(choices, { label = path })
+                for _, entry in ipairs(repos) do
+                    table.insert(
+                        choices,
+                        {
+                            label = wezterm.format {
+                                {
+                                    Foreground = {
+                                        AnsiColor = entry.changes and "Yellow" or "Green"
+                                    },
+                                },
+                                { Text = entry.path },
+                            },
+                            id = entry.path,
+                        }
+                    )
                 end
 
                 window:perform_action(
@@ -108,7 +121,7 @@ function module.apply_to_config(config)
                         choices = choices,
                         fuzzy = true,
                         fuzzy_description = "Search: ",
-                        action = wezterm.action_callback(function(window, pane, project, path)
+                        action = wezterm.action_callback(function(window, _, path, _)
                             -- "label" may be empty if nothing was selected. Don't bother doing anything
                             -- when that happens.
                             if not path then

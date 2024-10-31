@@ -18,10 +18,9 @@ function module.apply_to_config(config)
     config.window_frame = {
         font = wezterm.font({ family = font_family, weight = "Bold" }),
         font_size = config.font_size - 4,
-        active_titlebar_bg = "rgba(0,0,0,0.8)",
-        inactive_titlebar_bg = "rgba(0,0,0,0.8)",
+        active_titlebar_bg = "rgba(10,10,10,1)",
+        inactive_titlebar_bg = "rgba(10,10,10,1)",
     }
-
 
     config.mouse_wheel_scrolls_tabs = false
     config.prefer_to_spawn_tabs = false
@@ -33,13 +32,12 @@ function module.apply_to_config(config)
     local fg_color = wezterm.color.parse(color_scheme.foreground)
 
     config.colors = {
-        background = "black",
+        background = "rgba(0,0,0,0.8)",
         tab_bar = {
-            background = "rgba(0,0,0,0.8)",
             active_tab = {
                 -- The color of the background area for the tab
                 bg_color = "rgba(80,80,80,0.8)",
-                fg_color = fg_color
+                fg_color = fg_color,
             },
             inactive_tab = {
                 -- The color of the background area for the tab

@@ -18,8 +18,28 @@ local function is_git_repo(path)
     return false
 end
 
+---@return boolean
+local function has_uncommitted_changes(path)
+    local command = "git -C " .. path .. " status --porcelain"
+    wezterm.log_info(command)
+
+    local handle = io.popen(command)
+    local result = handle:read("*a")
+    handle:close()
+
+    -- If `result` is not empty, there are uncommitted changes
+    return result ~= ""
+end
+
+---@class Repo
+---@field path string The path to the file or directory.
+---@field changes boolean Whether there are uncommitted changes.
+
+---@param start_dir string
 local function recursively_find_git_repos(start_dir)
+    ---@type Repo[]
     local repos = {}
+    ---@type string[]
     local stack = { start_dir }
     while stack do
         local dir = table.remove(stack, 1)
@@ -28,7 +48,7 @@ local function recursively_find_git_repos(start_dir)
         end
 
         if is_git_repo(dir) then
-            table.insert(repos, dir)
+            table.insert(repos, {path = dir, changes = has_uncommitted_changes(dir) })
         else
             local sub_dirs = wezterm.read_dir(dir)
             for _, sub_dir in ipairs(sub_dirs) do
@@ -43,7 +63,7 @@ local function recursively_find_git_repos(start_dir)
 end
 
 local function sort_alphabetical(a, b)
-    return a:lower() < b:lower()
+    return a.path:lower() < b.path:lower()
 end
 
 function module.get_repos(repos_dir)
