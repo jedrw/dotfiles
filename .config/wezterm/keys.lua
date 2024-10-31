@@ -121,7 +121,8 @@ function module.apply_to_config(config)
                         choices = choices,
                         fuzzy = true,
                         fuzzy_description = "Search: ",
-                        action = wezterm.action_callback(function(window, _, path, _)
+                        action = wezterm.action_callback(function(window, _, id, _)
+                            local path = id
                             -- "label" may be empty if nothing was selected. Don't bother doing anything
                             -- when that happens.
                             if not path then
