@@ -8,10 +8,14 @@
   "[helm]": {
     "editor.formatOnSave": false
   },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 18,
   "search.useReplacePreview": false,
   "editor.indentSize": "tabSize",
-  "explorer.fileNesting.enabled": false
+  "explorer.fileNesting.enabled": false,
+  "workbench.startupEditor": "none"
 }
