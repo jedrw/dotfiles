@@ -32,7 +32,8 @@ function module.apply_to_config(config)
     local fg_color = wezterm.color.parse(color_scheme.foreground)
 
     config.colors = {
-        background = "rgba(0,0,0,0.8)",
+        background = "black",
+
         tab_bar = {
             active_tab = {
                 -- The color of the background area for the tab
