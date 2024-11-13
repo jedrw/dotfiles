@@ -1,3 +1,0 @@
-#!/bin/bash
-
-find ~/repos/github/jedrw/ -path *.git/config | xargs sed -i 's/lupinelab/jedrw/g'
