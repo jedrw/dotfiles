@@ -75,3 +75,7 @@ source_if_exists $HOME/.bash_config/.bash_tmux
 source_if_exists $HOME/.bash_config/.bash_venv
 source_if_exists $HOME/.bash_config/.bash_wayland
 source_if_exists $HOME/.bash_work
+source_if_exists $HOME/.bash_lfs
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/jedrw/.pulumi/bin
