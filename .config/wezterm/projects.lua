@@ -1,6 +1,8 @@
 local wezterm = require('wezterm')
 local module = {}
 
+---@param path string
+---@return boolean
 local function is_dir(path)
     local f = io.open(path, "r")
     local _, _, code = f:read(1)
@@ -8,6 +10,8 @@ local function is_dir(path)
     return code == 21
 end
 
+---@param path string
+---@return boolean
 local function is_git_repo(path)
     local dirs = wezterm.read_dir(path)
     for _, dir in ipairs(dirs) do
@@ -18,11 +22,10 @@ local function is_git_repo(path)
     return false
 end
 
+---@param path string
 ---@return boolean
 local function has_uncommitted_changes(path)
     local command = "git -C " .. path .. " status --porcelain"
-    wezterm.log_info(command)
-
     local handle = io.popen(command)
     local result = handle:read("*a")
     handle:close()
@@ -62,10 +65,15 @@ local function recursively_find_git_repos(start_dir)
     return repos
 end
 
+---@param a Repo
+---@param b Repo
+---@return boolean
 local function sort_alphabetical(a, b)
     return a.path:lower() < b.path:lower()
 end
 
+---@param repos_dir string
+---@return Repo[]
 function module.get_repos(repos_dir)
     local repos = recursively_find_git_repos(repos_dir)
     table.sort(repos, sort_alphabetical)

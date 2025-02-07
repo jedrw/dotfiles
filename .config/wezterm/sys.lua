@@ -1,7 +1,7 @@
 local module = {}
 local wezterm = require 'wezterm'
 
-module.is_os = function(name)
+function module.is_os (name)
     return wezterm.target_triple:find(name) ~= nil
 end
 

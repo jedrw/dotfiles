@@ -3,9 +3,10 @@ local projects = require "projects"
 local module = {}
 
 function module.apply_to_config(config)
+    local repos_dir = wezterm.home_dir .. "/repos"
+    local repos = projects.get_repos(repos_dir)
     config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1500 }
     local keys = {
-        -- Tmux emulation bindings
         {
             key = "r",
             mods = "LEADER",
@@ -59,6 +60,7 @@ function module.apply_to_config(config)
         {
             key = "c",
             mods = "LEADER",
+            description = "Close additional panes",
             action = wezterm.action_callback(function(win, pane)
                 local tab = win:active_tab()
                 for _, p in ipairs(tab:panes()) do
@@ -75,7 +77,7 @@ function module.apply_to_config(config)
             action = wezterm.action.ShowDebugOverlay
         },
         {
-            key = "t",
+            key = "n",
             mods = "LEADER",
             action = wezterm.action.PromptInputLine {
                 description = wezterm.format {
@@ -83,10 +85,21 @@ function module.apply_to_config(config)
                     { Foreground = { AnsiColor = "Fuchsia" } },
                     { Text = "Enter name for new tab" },
                 },
-                action = wezterm.action_callback(function(window, pane, line)
-                    window:mux_window():spawn_tab { cwd = wezterm.home_dir }
+                action = wezterm.action_callback(function(window, _, line)
                     if line then
-                        window:active_tab():set_title(line)
+                        for _, repo in ipairs(repos) do
+                            local project = string.gsub(repo.path, "(.*jedrw/)(.*)", "%2")
+                            if string.find(line, project) then
+                                window:mux_window():spawn_tab({cwd = repo.path})
+                                window:active_tab():set_title(line)
+                                return
+                            end
+                        end
+
+                        window:mux_window():spawn_tab { cwd = wezterm.home_dir }
+                        if line then
+                            window:active_tab():set_title(line)
+                        end
                     end
                 end),
             },
@@ -95,22 +108,21 @@ function module.apply_to_config(config)
             key = "p",
             mods = "LEADER",
             action = wezterm.action_callback(function(window, pane)
-                local repos_dir = wezterm.home_dir .. "/repos"
-                local repos = projects.get_repos(repos_dir)
+                repos = projects.get_repos(repos_dir)
                 local choices = {}
-                for _, entry in ipairs(repos) do
+                for _, repo in ipairs(repos) do
                     table.insert(
                         choices,
                         {
                             label = wezterm.format {
                                 {
                                     Foreground = {
-                                        AnsiColor = entry.changes and "Yellow" or "Green"
+                                        AnsiColor = repo.changes and "Yellow" or "Green"
                                     },
                                 },
-                                { Text = entry.path },
+                                { Text = repo.path },
                             },
-                            id = entry.path,
+                            id = repo.path,
                         }
                     )
                 end
@@ -150,6 +162,50 @@ function module.apply_to_config(config)
         },
         {
             key = "s",
+            mods = "LEADER",
+            action = wezterm.action_callback(function(window, pane)
+                local choices = {}
+                for _, domain in ipairs(wezterm.default_ssh_domains()) do
+                    if not string.find(domain.name, "SSHMUX") then
+                        local hostname = string.gsub(domain.name, "(SSH:)(.*)", "%2")
+                        table.insert(
+                            choices,
+                            {
+                                label = wezterm.format {
+                                    { Text = hostname },
+                                },
+                                id = hostname
+                            }
+                        )
+                    end
+                end
+
+                window:perform_action(
+                    wezterm.action.InputSelector {
+                        title = "SSH",
+                        choices = choices,
+                        fuzzy = true,
+                        fuzzy_description = "Search SSH connections: ",
+                        action = wezterm.action_callback(function(window, _, id, _)
+                            local hostname = id
+                            -- "label" may be empty if nothing was selected. Don't bother doing anything
+                            -- when that happens.
+                            if not hostname then
+                                return
+                            end
+
+                            -- Else create a new tab for project with cwd of project path
+                            local tab, _, _ = window:mux_window():spawn_tab { args = {"ssh", hostname} }
+                            tab:set_title(hostname)
+                        end),
+                    },
+                    pane
+                )
+            end
+            ),
+        },
+        {
+            key = "t",
             mods = "LEADER",
             action = wezterm.action.ShowLauncherArgs {
                 flags = "FUZZY|TABS",
