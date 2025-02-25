@@ -5,5 +5,17 @@
 [push]
 	autoSetupRemote = true
 
+[branch]
+    sort = -committerdate
+
+[fetch]
+	all = true
+
+[init]
+    defaultBranch = main
+
+[diff]
+	algorithm = histogram
+
 [includeIf "gitdir:~/repos/bitbucket.org/giftcartdev/"]
-  path = ~/.gitconfig-work
+	path = ~/.gitconfig-work
