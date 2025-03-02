@@ -7,7 +7,7 @@ mkdir -p $DIR
 
 [[ -p $PIPE ]] || (
     rm -f $PIPE
-    mknod $PIPE p
+    mkfifo $PIPE
     chmod 600 $PIPE
 )
 

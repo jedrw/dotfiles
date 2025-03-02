@@ -13,7 +13,7 @@ mkdir -p $DIR
 
 [[ -p $PIPE ]] || (
     rm -f $PIPE
-    mknod $PIPE p
+    mkfifo $PIPE
 )
 
 while true
