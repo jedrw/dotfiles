@@ -3,8 +3,6 @@ source <(kubectl completion bash)
 alias k=kubectl
 complete -o default -F __start_kubectl k
 
-export KUBECONFIG=~/.local/share/mount/kubeconfig
-
 if command -v kubectl &> /dev/null && [[ ! -L ~/.local/bin/k ]]; then
     ln -s $(which kubectl) ~/.local/bin/k
 fi
