@@ -1,3 +1,4 @@
 [tools]
 zig = "latest"
 rust = "latest"
+ruby = "latest"
