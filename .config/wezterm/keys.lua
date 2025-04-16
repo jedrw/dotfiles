@@ -90,7 +90,7 @@ function module.apply_to_config(config)
                         for _, repo in ipairs(repos) do
                             local project = string.gsub(repo.path, "(.*jedrw/)(.*)", "%2")
                             if string.find(line, project) then
-                                window:mux_window():spawn_tab({cwd = repo.path})
+                                window:mux_window():spawn_tab({ cwd = repo.path })
                                 window:active_tab():set_title(line)
                                 return
                             end
@@ -195,7 +195,7 @@ function module.apply_to_config(config)
                             end
 
                             -- Else create a new tab for project with cwd of project path
-                            local tab, _, _ = window:mux_window():spawn_tab { args = {"ssh", hostname} }
+                            local tab, _, _ = window:mux_window():spawn_tab { args = { "ssh", hostname } }
                             tab:set_title(hostname)
                         end),
                     },
