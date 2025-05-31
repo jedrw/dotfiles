@@ -38,7 +38,7 @@
   // },
   "sway/workspaces": {
     "all-outputs": false,
-    "format": "<sub>{icon}</sub>\n{windows}",
+    "format": "{icon}",
     "window-format": "{name}",
     "window-rewrite": {
       "Alacritty": "",
