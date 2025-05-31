@@ -150,7 +150,7 @@
     "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
     "menu-actions": {
       "logout": "swaymsg exit",
-      "shutdown": "shutdown",
+      "shutdown": "shutdown now",
       "reboot": "reboot",
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate"
