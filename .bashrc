@@ -63,6 +63,7 @@ source_if_exists $HOME/.bash_config/.bash_go
 source_if_exists $HOME/.bash_config/.bash_secrets
 source_if_exists $HOME/.bash_config/.bash_kubectl
 source_if_exists $HOME/.bash_config/.bash_libvirt
+source_if_exists $HOME/.bash_config/.bash_podman
 source_if_exists $HOME/.bash_config/.bash-preexec.sh
 source_if_exists $HOME/.bash_config/.bash_fzf
 source_if_exists $HOME/.bash_config/.bash_mise
