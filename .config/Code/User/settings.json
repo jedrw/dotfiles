@@ -5,6 +5,9 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
   "[helm]": {
     "editor.formatOnSave": false
   },
