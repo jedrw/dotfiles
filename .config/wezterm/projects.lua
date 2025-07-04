@@ -4,10 +4,8 @@ local module = {}
 ---@param path string
 ---@return boolean
 local function is_dir(path)
-    local f = io.open(path, "r")
-    local _, _, code = f:read(1)
-    f:close()
-    return code == 21
+    local ok, entries = pcall(wezterm.read_dir, path)
+    return ok and type(entries) == "table"
 end
 
 ---@param path string
@@ -45,18 +43,18 @@ local function recursively_find_git_repos(start_dir)
     ---@type string[]
     local stack = { start_dir }
     while stack do
-        local dir = table.remove(stack, 1)
+        local dir = table.remove(stack)
         if dir == nil then
             break
         end
 
         if is_git_repo(dir) then
-            table.insert(repos, {path = dir, changes = has_uncommitted_changes(dir) })
+            table.insert(repos, { path = dir, changes = has_uncommitted_changes(dir) })
         else
             local sub_dirs = wezterm.read_dir(dir)
             for _, sub_dir in ipairs(sub_dirs) do
                 if is_dir(sub_dir) then
-                    table.insert(stack, 1, sub_dir)
+                    table.insert(stack, sub_dir)
                 end
             end
         end

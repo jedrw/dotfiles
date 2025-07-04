@@ -141,8 +141,9 @@ function module.apply_to_config(config)
                                 return
                             end
 
+                            -- Get the project name from the path
+                            local project = string.match(path, "([^/]+)/?$")
                             -- Check for a tab with a matching title and switch to it if found
-                            local project = string.gsub(path, "(.*jedrw/)(.*)", "%2")
                             for _, tab in ipairs(window:mux_window():tabs()) do
                                 if tab:get_title() == project then
                                     tab:activate()

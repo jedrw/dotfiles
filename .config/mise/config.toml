@@ -2,3 +2,4 @@
 zig = "latest"
 rust = "latest"
 ruby = "latest"
+python = "latest"
