@@ -80,3 +80,8 @@ source_if_exists $HOME/.bash_lfs
 
 # add Pulumi to the PATH
 export PATH=$PATH:/home/jedrw/.pulumi/bin
+
+# Use GNU coreutils
+if [[ -d "/opt/homebrew/opt/coreutils/libexec/gnubin" ]]; then
+    PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+fi
