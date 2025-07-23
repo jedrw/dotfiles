@@ -1,0 +1,92 @@
+{
+  "terminal.integrated.fontSize": 18,
+  "editor.fontSize": 18,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "rubocop.vscode-rubocop"
+  },
+  "files.autoSave": "onFocusChange",
+  "terminal.integrated.scrollback": 5000,
+  "terminal.external.osxExec": "iTerm2.app",
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "editor.formatOnSave": true,
+  "gitlens.codeLens.enabled": false,
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "aws.suppressPrompts": {
+    "regionAddAutomatically": true
+  },
+  "aws.telemetry": false,
+  "ansible.python.interpreterPath": "/Users/jedwilliamson/.asdf/shims/python",
+  "python.analysis.typeCheckingMode": "strict",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.fontFamily": "'Intel One Mono'",
+  "yaml.schemas": {
+    "file:///Users/jedwilliamson/.vscode/extensions/atlassian.atlascode-3.8.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.jira.jqlList": [
+    {
+      "id": "313fcc4c-d481-47b4-96dc-4d86735129e9",
+      "enabled": true,
+      "name": "My teamtillo Issues",
+      "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId": "d358954b-961e-4dd4-a110-b0bfb078bd92",
+      "monitor": true
+    }
+  ],
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.detectIndentation": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "zig.zls.enabled": "on",
+  "zig.zls.inlayHintsShowParameterName": false,
+  "zig.zls.inlayHintsShowVariableTypeHints": false,
+  "zig.zls.additionalOptions": {
+    // "formatOnSave": true
+  },
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.genericParameterHints.const.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rubyLsp.formatter": "rubocop",
+  "atlascode.jira.lastCreateSiteAndProject": {
+    "siteId": "",
+    "projectKey": ""
+  }
+}
