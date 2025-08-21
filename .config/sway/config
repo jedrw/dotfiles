@@ -36,7 +36,9 @@ output HDMI-A-1 {
 
 output DP-1 {
     resolution 2560x1440@170Hz
-    render_bit_depth 10
+    render_bit_depth 8
+    # This breaks screensharing :(
+    # render_bit_depth 10
     position 1440 560
 }
 
@@ -51,6 +53,11 @@ output DP-3 {
     position 0 0
     transform 270
 }
+
+## Screensharing 
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_CURRENT_DESKTOP=sway
 
 # Notification daemon
 exec swaync
