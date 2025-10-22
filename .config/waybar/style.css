@@ -8,7 +8,7 @@ window#waybar {
   background: transparent;
   color: #ffffff;
   transition-property: background-color;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 window#waybar.hidden {
@@ -20,11 +20,11 @@ window#waybar.hidden {
 }
 
 #window {
-  margin: 2;
-  padding-left: 8;
-  padding-right: 8;
-  background-color: rgba(0,0,0,0.3);
-  font-size:14px;
+  margin: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -39,7 +39,7 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
   background: inherit;
-  box-shadow: inset 0 1px #ffffff; 
+  box-shadow: inset 0 1px #ffffff;
 }
 
 #workspaces button {
@@ -47,7 +47,7 @@ button {
 }
 
 #workspaces button.focused {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   border-top: 2px solid #ffffff;
 }
 
@@ -56,7 +56,7 @@ button {
 }
 
 #mode {
-  background-color: #64727D;
+  background-color: #64727d;
   border-bottom: 3px solid #ffffff;
 }
 
@@ -81,7 +81,7 @@ button {
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 5px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   color: #ffffff;
 }
 
@@ -105,9 +105,10 @@ button {
   color: red;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
   color: #ffffff;
-  background-color: #26A65B;
+  background-color: #26a65b;
 }
 
 @keyframes blink {

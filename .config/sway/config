@@ -68,22 +68,19 @@ exec --no-startup-id /usr/lib/pam_kwallet_init
 # Rebuild KDE system config cache
 exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
 
+# Screen locking
+set $lock 'swaylock -f -c 000000 -i /home/jedrw/Pictures/Wallpapers/current.png'
+bindsym $mod+l exec $lock
+
 ### Idle configuration
 #
-# Example configuration:
-#
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-set $lock 'swaylock -f -c 000000 -i /home/jedrw/Pictures/Wallpapers/current.png'
-
+# This will lock the screen after 300 seconds of inactivity, then turn off
+# the displays after another 300 seconds, and turn the screens back on when
+# resumed. It will also lock the screen before the computer goes to sleep.
 exec swayidle -w \
     timeout 300 $lock \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep $lock
-
-bindsym $mod+l exec $lock
 
 ### Input configuration
 #
