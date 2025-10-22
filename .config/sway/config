@@ -62,6 +62,12 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 # Notification daemon
 exec swaync
 
+# login in to kwallet
+exec --no-startup-id /usr/lib/pam_kwallet_init
+
+# Rebuild KDE system config cache
+exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
+
 ### Idle configuration
 #
 # Example configuration:
@@ -135,6 +141,8 @@ bindsym Ctrl+grave exec swaymsg '[app_id="$ddterm_id"] scratchpad show' \
   || $ddterm \
   && sleep .1 \
   && swaymsg '[app_id="$ddterm_id"] $ddterm_resize'
+
+exec $ddterm
 
 ### Key bindings
 #
@@ -277,7 +285,6 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 
-exec_always $ddterm
 exec_always 'pkill waybar; waybar --config ~/.config/waybar/waybar.jsonc'
 # Read `man 5 sway-bar` for more information about this section.
 # bar {
