@@ -17,5 +17,5 @@
 [diff]
 	algorithm = histogram
 
-[includeIf "gitdir:~/repos/bitbucket.org/giftcartdev/"]
+[includeIf "gitdir:~/repos/github.com/icerepository/"]
 	path = ~/.gitconfig-work
