@@ -1,0 +1,31 @@
+- name: Sway setup
+  become: true
+  hosts: localhost
+  connection: local
+  vars:
+    apps:
+      - sway
+      - swaybg
+      - swayidle
+      - swaylock
+      - sway-notification-center
+      - fonts-font-awesome
+      - grimshot
+      - rofi
+      - waybar
+      - xdg-desktop-portal-wlr
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install sway and related apps
+      ansible.builtin.package:
+        name: "{{ apps }}"
+        state: present
+
+    - name: Create desktop entry
+      ansible.builtin.copy:
+        src: "sway/sway.desktop"
+        dest: /usr/share/wayland-sessions/sway.desktop
+        mode: "0644"

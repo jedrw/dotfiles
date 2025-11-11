@@ -1,0 +1,30 @@
+- name: Local setup
+  become: true
+  hosts: localhost
+  connection: local
+  vars:
+    apps:
+      - curl
+      - docker.io
+      - docker-compose-v2
+      - fzf
+      - git
+    classic_snaps:
+      - {name: aws-cli, bin: "aws"}
+      - {name: kubectl, bin: "kubectl"}
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install apps
+      ansible.builtin.package:
+        name: "{{ apps }}"
+        state: present
+
+    - name: Install classic snaps
+      ansible.builtin.command:
+        cmd: snap install "{{ item.name }}" --classic
+      args:
+        creates: "/snap/bin/{{ item.bin }}"
+      loop: "{{ classic_snaps }}"
