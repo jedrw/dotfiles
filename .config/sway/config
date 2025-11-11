@@ -15,12 +15,12 @@ set $term wezterm
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | tofi-drun --drun-launch=true | xargs swaymsg exec --
 set $menu rofi -show drun
-set $filemanager dolphin
+set $filemanager nautilus
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/jedrw/Pictures/Wallpapers/current.png fill
+output * bg $HOME/Pictures/Wallpapers/current.png fill
 
 #
 # Example configuration:
@@ -69,7 +69,7 @@ exec --no-startup-id /usr/lib/pam_kwallet_init
 exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
 
 # Screen locking
-set $lock 'swaylock -f -c 000000 -i /home/jedrw/Pictures/Wallpapers/current.png'
+set $lock 'swaylock -f -c 000000 -i $HOME/Pictures/Wallpapers/current.png'
 bindsym $mod+l exec $lock
 
 ### Idle configuration
@@ -106,6 +106,11 @@ input type:touchpad {
 }
 
 input "1267:12615:DELL0A80:00_04F3:3147_Touchpad" {
+	tap enabled
+	natural_scroll enabled
+}
+
+input "1739:52839:SYNA8022:00_06CB:CE67_Touchpad" {
 	tap enabled
 	natural_scroll enabled
 }
@@ -216,7 +221,7 @@ exec $ddterm
 
     bindsym XF86Calculator exec gnome-calculator
 
-    bindsym Print exec grimblast copy area
+    bindsym Print exec grimshot copy area
 
     bindsym XF86MonBrightnessUp exec brightnessctl s +5%
     bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
