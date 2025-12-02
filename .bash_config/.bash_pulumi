@@ -1,5 +1,9 @@
 export PATH=$PATH:$HOME/.pulumi/bin
 
+if command -v pulumi &> /dev/null; then
+    eval $(pulumi completion bash)
+fi
+
 # PULUMI_BIN=$(which pulumi)
 # function pulumi() {
 #     if [[ $@ =~ "stack select" ]]; then

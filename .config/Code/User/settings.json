@@ -14,7 +14,6 @@
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 18,
   "search.useReplacePreview": false,
@@ -32,5 +31,20 @@
     },
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "editor.cursorStyle": "block"
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
+  "editor.cursorStyle": "block",
+  "chat.agent.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  }
 }
