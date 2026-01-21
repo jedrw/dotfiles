@@ -1,2 +1,6 @@
 export AWS_PAGER=""
 alias aws-account='aws sts get-caller-identity | jq -r .Account'
+
+if command -v aws &> /dev/null; then
+    complete -C /usr/local/bin/aws_completer aws
+fi

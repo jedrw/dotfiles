@@ -15,7 +15,7 @@ set $term wezterm
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | tofi-drun --drun-launch=true | xargs swaymsg exec --
 set $menu rofi -show drun
-set $filemanager nautilus
+set $filemanager dolphin
 
 ### Output configuration
 #
@@ -82,7 +82,8 @@ bindsym $mod+l exec $lock
 # resumed. It will also lock the screen before the computer goes to sleep.
 exec_always pkill swayidle; swayidle -w \
     timeout 300 $lock \
-    # timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    timeout 300 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
     before-sleep $lock
 
 ### Input configuration
