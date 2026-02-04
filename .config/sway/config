@@ -130,6 +130,9 @@ default_border pixel 2
 # Dropdown terminal
 set $ddterm_id dropdown
 set $ddterm "$term start --class $ddterm_id"
+
+exec_always  bash -c "pidof wezterm-gui || $term start --class $ddterm_id"
+
 set $ddterm_resize resize set 100ppt 100ppt, move position 0 0
 for_window [app_id="$ddterm_id"] {
   floating enable
@@ -147,8 +150,6 @@ bindsym Ctrl+grave exec swaymsg '[app_id="$ddterm_id"] scratchpad show' \
   || $ddterm \
   && sleep .1 \
   && swaymsg '[app_id="$ddterm_id"] $ddterm_resize'
-
-exec $ddterm
 
 ### Key bindings
 #
