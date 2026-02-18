@@ -5,17 +5,18 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "[helm]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "[go]": {
-    "editor.defaultFormatter": "golang.go",
+    "editor.defaultFormatter": "golang.go"
   },
   "[scala]": {
     "editor.defaultFormatter": "scalameta.metals",
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "never",
-    },
+      "source.organizeImports": "never"
+    }
   },
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 18,
@@ -30,14 +31,14 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true,
+      "strings": true
     },
-    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSaveMode": "file"
   },
   "editor.cursorStyle": "block",
   "chat.agent.enabled": false,
@@ -49,18 +50,17 @@
   "files.trimFinalNewlines": true,
   "files.watcherExclude": {
     "**/.bloop": true,
-    "**/.metals": true,
+    "**/.metals": true
   },
-  "editor.formatOnSaveMode": "modificationsIfAvailable",
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
     "source.addMissingImports": "explicit",
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSaveMode": "file"
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.viewSessions.enabled": false,
@@ -68,6 +68,10 @@
     "*": true,
     "plaintext": false,
     "markdown": true,
-    "scminput": false,
+    "scminput": false
   },
+  "typescript.preferences.quoteStyle": "double",
+  "javascript.preferences.quoteStyle": "double",
+  "yaml.format.singleQuote": false,
+  "gitlens.codeLens.enabled": false
 }
