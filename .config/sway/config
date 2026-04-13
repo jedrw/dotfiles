@@ -83,7 +83,7 @@ exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ss
 exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
 
 # Screen locking
-set $lock 'echo inactive > $HOME/.config/teams-for-linux/idle-state && swaylock -f -c 000000 -i $HOME/Pictures/Wallpapers/current.png'
+set $lock 'echo inactive > /tmp/teams-for-linux-idle-state-$USER && swaylock -f -c 000000 -i $HOME/Pictures/Wallpapers/current.png'
 bindsym $mod+l exec $lock
 
 ### Idle configuration
@@ -92,9 +92,9 @@ bindsym $mod+l exec $lock
 # the displays after another 300 seconds, and turn the screens back on when
 # resumed. It will also lock the screen before the computer goes to sleep.
 exec_always pkill swayidle; swayidle -w \
-    timeout 300 $lock \
+    timeout 30 $lock \
     timeout 300 'swaymsg "output * power off"' \
-    resume 'echo active > $HOME/.config/teams-for-linux/idle-state && swaymsg "output * power on"' \
+    resume 'echo active > /tmp/teams-for-linux-idle-state-$USER && swaymsg "output * power on"' \
     before-sleep $lock
 
 ### Input configuration
