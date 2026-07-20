@@ -65,14 +65,19 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.viewSessions.enabled": false,
   "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
+    "*": true
   },
   "js/ts.preferences.quoteStyle": "double",
   "yaml.format.singleQuote": false,
   "gitlens.codeLens.enabled": false,
   "workbench.colorTheme": "Dark Modern",
-  "claudeCode.preferredLocation": "panel"
+  "claudeCode.preferredLocation": "sidebar",
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml"
+  ]
 }
