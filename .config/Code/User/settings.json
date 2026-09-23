@@ -13,7 +13,6 @@
     "editor.defaultFormatter": "golang.go"
   },
   "[scala]": {
-    "editor.defaultFormatter": "scalameta.metals",
     "editor.codeActionsOnSave": {
       "source.organizeImports": "never"
     }
@@ -36,15 +35,12 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file"
   },
   "editor.cursorStyle": "block",
   "chat.agent.enabled": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -64,9 +60,6 @@
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.viewSessions.enabled": false,
-  "github.copilot.enable": {
-    "*": true
-  },
   "js/ts.preferences.quoteStyle": "double",
   "yaml.format.singleQuote": false,
   "gitlens.codeLens.enabled": false,
@@ -79,5 +72,6 @@
     "**/.gitea/workflows/*.yaml",
     "**/.forgejo/workflows/*.yml",
     "**/.forgejo/workflows/*.yaml"
-  ]
+  ],
+  "claudeCode.hideOnboarding": true
 }

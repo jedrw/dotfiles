@@ -1,6 +1,8 @@
 {
   "awayOnSystemIdle": true,
-  "idleDetection": {
-    "forceState": true
+  "screenSharing": {
+    "thumbnail": {
+      "enabled": false
+    }
   }
 }
