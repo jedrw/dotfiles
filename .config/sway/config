@@ -82,6 +82,9 @@ exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ss
 # Rebuild KDE system config cache
 exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
 
+# Screenshots
+bindsym Print exec grimshot copy area
+
 # Screen locking
 set $lock 'echo inactive > /tmp/teams-for-linux-idle-state-$USER && swaylock -f -c 000000 -i $HOME/Pictures/Wallpapers/current.png'
 bindsym $mod+l exec $lock
@@ -236,8 +239,6 @@ bindsym Ctrl+grave exec swaymsg '[app_id="$ddterm_id"] scratchpad show' \
     # We just use 1-10 as the default.
 
     bindsym XF86Calculator exec gnome-calculator
-
-    bindsym Print exec grimshot copy area
 
     bindsym XF86MonBrightnessUp exec brightnessctl s +5%
     bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
